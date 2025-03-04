@@ -3,3 +3,4 @@ tensorflow==2.10
 numpy
 pandas
 matplotlib
+python==3.10.12
