@@ -1,6 +1,5 @@
 streamlit
-tensorflow==2.16.0
+tensorflow==2.10.0
 numpy
 pandas
 matplotlib
-python==3.10.12
