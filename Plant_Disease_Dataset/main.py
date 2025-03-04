@@ -2,6 +2,8 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+import os
+import io
 
 def model_prediction(test_image):
     try:
@@ -23,7 +25,15 @@ app_mode = st.sidebar.selectbox('Select Page', ['Home', 'About', 'Disease Recogn
 if app_mode == 'Home':
     st.header('Plant Disease Recognition System')
     image_path = "plant_disease_image.jpg"
-    st.image(image_path, use_container_width=True)
+    
+    if os.path.exists(image_path):
+        with open(image_path, "rb") as img_file:
+            img_bytes = img_file.read()
+        st.image(Image.open(io.BytesIO(img_bytes)), use_container_width=True)
+    else:
+        st.warning("Image file not found. Displaying a placeholder image.")
+        st.image("https://via.placeholder.com/500", use_container_width=True)
+    
     st.markdown('''
     ### How It Works
     1. **Upload Image:** Go to **Disease Recognition** and upload an image.
