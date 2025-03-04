@@ -7,7 +7,7 @@ import io
 
 def model_prediction(test_image):
     try:
-        model = tf.keras.models.load_model('trained_model.keras')
+        model = tf.keras.models.load_model('trained_model.h5')
         image = Image.open(test_image)
         image = image.resize((128, 128))
         input_arr = np.array(image) / 255.0  # Normalize
